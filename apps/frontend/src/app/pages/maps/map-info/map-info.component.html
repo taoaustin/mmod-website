@@ -34,16 +34,11 @@
         </button>
         @if (map.currentVersion.downloadURL; as bsp) {
           <div>
-            <a
-              (click)="downloadOverlay.show()"
-              [style.anchor-name]="'--download-anchor'"
-              class="btn btn-purple"
-              mTooltip="Download map file"
-            >
+            <a #downloadAnchor (click)="downloadOverlay.show()" class="btn btn-purple" mTooltip="Download map file">
               <m-icon class="pb-0.5" icon="download" />
             </a>
-            <m-popover #downloadOverlay anchorName="--download-anchor">
-              <div class="max-w-lg">
+            <m-popover #downloadOverlay [anchor]="downloadAnchor">
+              <div class="min-w-[15rem] max-w-lg">
                 <p class="mb-1 text-sm italic text-gray-200">
                   For convenience we recommend downloading and launching maps through the in-game map browser!
                 </p>
@@ -77,7 +72,7 @@
           >
             <m-icon [icon]="notifications ? 'bell-alert' : 'bell-outline'" />
           </button>
-          @if (!isSubmitter && !localUserService.isModOrAdmin) {
+          @if ((!isSubmitter && !localUserService.isModOrAdmin) || true) {
             <m-report-button class="text-lg" mTooltip="Report map" [reportType]="ReportType.MAP_REPORT" [reportData]="map.id.toString()" />
           }
         }
