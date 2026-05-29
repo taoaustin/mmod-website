@@ -84,7 +84,7 @@ export class TooltipDirective implements AfterViewInit, OnChanges {
       });
       this.popoverContent = undefined;
     }
-    if (this.content === undefined) return;
+    if (!this.content) return;
     if (typeof this.content === 'string') {
       this.popoverContent = [this.renderer.createElement('span')];
       this.renderer.appendChild(
