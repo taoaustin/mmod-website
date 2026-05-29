@@ -72,7 +72,7 @@
           >
             <m-icon [icon]="notifications ? 'bell-alert' : 'bell-outline'" />
           </button>
-          @if ((!isSubmitter && !localUserService.isModOrAdmin) || true) {
+          @if (!isSubmitter && !localUserService.isModOrAdmin) {
             <m-report-button class="text-lg" mTooltip="Report map" [reportType]="ReportType.MAP_REPORT" [reportData]="map.id.toString()" />
           }
         }
